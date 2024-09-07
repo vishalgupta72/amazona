@@ -1,0 +1,46 @@
+#root,
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  transition: .5s;
+}
+
+.page {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+img {
+  width: min(100%, 150px);
+  object-fit: contain;
+  aspect-ratio: 1 / 1;
+}
+
+.product__page img {
+  width: min(max(30vw, 200px), 300px);
+}
+
+.navbar {
+  background-color: #212121;
+}
+
+.product__card {
+  width: clamp(100px, 20rem, 30vw);
+}
+
+a * {
+  text-decoration: none !important;
+}
+
+.star {
+  display: inline-block;
+  font-size: 24px;
+  color: #e6e6e6;
+}
+
+.star.filled {
+  color: #ffd700;
+}
