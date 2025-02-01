@@ -40,7 +40,7 @@ export default function Navbar() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     {/* <Search /> */}
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
+                    <input className="form-control w-25 mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         {context.state.user &&
                             <li className="nav-item dropdown">
