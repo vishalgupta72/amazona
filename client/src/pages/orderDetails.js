@@ -3,7 +3,7 @@ import MyContext from "../MyContext";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { fetchHeaders } from "../helpers";
 import useTitle from "../hooks/title";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 
 function OrderDetails() {
@@ -23,7 +23,7 @@ function OrderDetails() {
         if (!localStorage.getItem("token"))
             navigate("/signin")
 
-        fetch(`${API_BASE_URL}/orders/${id}`, { headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders/${id}`, { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.entry) {
@@ -54,7 +54,7 @@ function OrderDetails() {
             JSON.stringify(order)
         );
 
-        fetch(`${API_BASE_URL}/add-order`, { method: "POST", body: JSON.stringify({ order }), headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/add-order`, { method: "POST", body: JSON.stringify({ order }), headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.status === "success") {
@@ -67,7 +67,7 @@ function OrderDetails() {
         setDoPayment(true)
     }
     function afterPayment() {
-        fetch(`${API_BASE_URL}/pay-order${order._id}` , { headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/pay-order${order._id}` , { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.status === "success") {

@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useTitle from "../hooks/title";
 import { fetchHeaders } from "../helpers";
 import { Link } from "react-router-dom";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 
 function OrderHistory() {
@@ -11,7 +11,7 @@ function OrderHistory() {
     const [orders, setOrders] = useState([])
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/orders`, { headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/orders`, { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             // console.log(data);

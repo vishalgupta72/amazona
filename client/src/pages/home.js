@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import MyContext from "../MyContext";
 import useTitle from "../hooks/title";
 import { fetchHeaders } from "../helpers";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 function Home() {
   useTitle("Home");
@@ -14,7 +14,9 @@ function Home() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`${API_BASE_URL}/products`, { headers: fetchHeaders() })
+    console.log(process.env)
+    console.log(process.env.REACT_APP_API_BASE_URL) 
+    fetch(`${process.env.REACT_APP_API_BASE_URL}/products`, { headers: fetchHeaders() })
       .then((response) => {
         return response.json();
       })

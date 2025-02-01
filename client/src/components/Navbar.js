@@ -4,7 +4,7 @@ import { fetchHeaders } from "../helpers";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import MyContext from "../MyContext";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 export default function Navbar() {
     const context = useContext(MyContext);
@@ -12,7 +12,7 @@ export default function Navbar() {
     const [cartLength, setCartLength] = useState(0);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/user`, { headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/user`, { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.user) {

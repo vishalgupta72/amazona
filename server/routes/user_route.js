@@ -5,7 +5,7 @@ const UserModel = mongoose.model("UserModel");
 const protectedRoute = require("../middleware/protectedResource");
 var bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { JWT_SECRET } = require('../config')
+// const { JWT_SECRET } = require('../config')
 
 
 //  user signup
@@ -59,7 +59,7 @@ router.post("/signin", (req, res) => {
             bcryptjs.compare(password, userInDB.password)
                 .then((didMatch) => {
                     if (didMatch) {
-                        const jwtToken = jwt.sign({ _id: userInDB._id }, JWT_SECRET);
+                        const jwtToken = jwt.sign({ _id: userInDB._id }, process.env.JWT_SECRET);
                         const userInfo = { "_id": userInDB._id, "email": userInDB.email, "firstName": userInDB.firstName };
 
                         res.status(200).json({ token: jwtToken, user: userInfo, message: "User logged in Successgfully", status: "success" });

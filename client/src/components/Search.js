@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchHeaders } from "../helpers";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 export default function Search() {
     const [results, setResults] = useState([])
@@ -10,7 +10,7 @@ export default function Search() {
         event.preventDefault();
 
         const search = event.target.search.value;
-        fetch( `${API_BASE_URL}/search`, { headers: fetchHeaders() }).then((response) => {
+        fetch( `${process.env.REACT_APP_API_BASE_URL}/search`, { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             // console.log(data);

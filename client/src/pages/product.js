@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import MyContext from "../MyContext";
 import { fetchHeaders } from "../helpers";
 import Reviews from "../components/Reviews"
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 
 function Product() {
@@ -14,7 +14,7 @@ function Product() {
     const context = useContext(MyContext);
 
     useEffect(() => {
-        fetch(`${API_BASE_URL}/products/${id}`, { headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/products/${id}`, { headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.entry) {

@@ -2,11 +2,12 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
-const {MONGODB_URL} = require('./config')
+// const {MONGODB_URL} = require('./config')
 
 global.__basedir = __dirname;
+require("dotenv").config();
 
-mongoose.connect(MONGODB_URL);
+mongoose.connect(process.env.MONGODB_URL);
 
 mongoose.connection.on('connnected', ()=>{
     console.log('DB Connected successfully!')
@@ -30,5 +31,5 @@ app.use(require('./routes/entry_route'));
 
 
 app.listen(4000, () =>{
-    console.log("server started successfully...");
+    console.log("server started successfully..."+"port no 4000");
 })

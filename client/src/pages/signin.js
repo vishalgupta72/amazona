@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchHeaders, setAuthToken } from "../helpers";
 import MyContext from "../MyContext";
-import { API_BASE_URL } from "../config";
+// import { API_BASE_URL } from "../config";
 
 function SignIn() {
     const navigate = useNavigate()
@@ -15,7 +15,7 @@ function SignIn() {
 
         const email = event.target.email.value;
         const password = event.target.password.value;
-        fetch(`${API_BASE_URL}/signin`, { method: "POST", body: JSON.stringify({ email, password }), headers: fetchHeaders() }).then((response) => {
+        fetch(`${process.env.REACT_APP_API_BASE_URL}/signin`, { method: "POST", body: JSON.stringify({ email, password }), headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.token) {
