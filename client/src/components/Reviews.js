@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchHeaders } from "../helpers";
+import { API_BASE_URL } from "../config";
 
 export default function Reviews({ productId, productReviews }) {
     const [reviews, setReviews] = useState([])
@@ -9,7 +10,7 @@ export default function Reviews({ productId, productReviews }) {
 
         const comment = event.target.comment.value;
         const rating = event.target.rating.value;
-        fetch("http://localhost:4000/add-review/" + productId, { method: "POST", body: JSON.stringify({ comment, rating }), headers: fetchHeaders() }).then((response) => {
+        fetch(`${API_BASE_URL}/add-review/${productId}` , { method: "POST", body: JSON.stringify({ comment, rating }), headers: fetchHeaders() }).then((response) => {
             return response.json();
         }).then((data) => {
             if (data.entrys)

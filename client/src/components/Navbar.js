@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Search from "./Search";
+// import Search from "./Search";
 import { fetchHeaders } from "../helpers";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
@@ -39,7 +39,8 @@ export default function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                    <Search />
+                    {/* <Search /> */}
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></input>
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                         {context.state.user &&
                             <li className="nav-item dropdown">
@@ -59,11 +60,11 @@ export default function Navbar() {
                             <Link className="nav-link" to={"/cart"}>Cart <span className="bg-danger rounded px-1">{cartLength}</span></Link>
                         </li>
                         {!context.state.user && <li className="nav-item">
-                            <Link className="nav-link" to={"/signin"}>Signin</Link>
+                            <Link className="nav-link" to={"/signin"}>Login</Link>
                         </li>}
-                        {!context.state.user && <li className="nav-item">
+                        {/* {!context.state.user && <li className="nav-item">
                             <Link className="nav-link" to={"/signup"}>Signup</Link>
-                        </li>}
+                        </li>} */}
                     </ul>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { API_BASE_URL } from "../config";
 
 function SignUp() {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ function SignUp() {
         const lastName = event.target.lastName.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        fetch("http://localhost:4000/signup", {
+        fetch(`${API_BASE_URL}/signup`, {
             method: "POST", body: JSON.stringify({ firstName, lastName, email, password }), headers: {
                 "Content-Type": "application/json"
             }

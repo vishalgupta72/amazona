@@ -40,6 +40,12 @@ function Product() {
     }
 
     function addToCart() {
+        let u = localStorage.getItem("token");
+        console.log(u);
+
+        if(u ===  null){
+            console.log("login please")
+        }
         context.state.cart.push(product)
         context.dispatchCart(context.state.cart)
     }
